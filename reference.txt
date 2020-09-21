@@ -1,0 +1,20 @@
+=========Running test files===========
+npx mocha ./main --recursive //run all files under main folder
+npx mocha \"./main/**/*.test.js\" --recursive //run all files ends with .test.js in main folder
+
+run through packge============
+"scripts": {
+    "test": "mocha \"./main/**/*.test.js\" --recursive" //run all test files
+    "test": "cross-env NODE_ENV=development mocha \"./main/**/*.test.js\" --recursive" //run with env variable
+  }
+
+  test from root folder
+   "test": "cross-env NODE_ENV=development mocha \"./**/*.test.js\" --exit", //it will include node_module folder as well
+
+   running from root and excluding node_module
+
+    "test": "cross-env NODE_ENV=development mocha \"./{,!(node_modules)/**/}*.test.js\" --exit",
+
+    check for coverage=============
+     "coverage":"cross-env NODE_ENV=development nyc --reporter=text npm test"
+    npm run coverage
